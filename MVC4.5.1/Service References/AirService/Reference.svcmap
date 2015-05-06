@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="06a7c036-4eb4-45ad-aff4-d77aceab1d6d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="G:\jignesh\MVC4.5.1\MVC4.5.1\Wsdl\air_v31_0\Air.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AirService.wsdl" MetadataType="Wsdl" ID="d91dd2eb-42b9-41f2-88e4-8dbacfb15819" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/air_v31_0/Air.wsdl" />
+    <MetadataFile FileName="Air.xsd" MetadataType="Schema" ID="945a2c2c-3817-4723-ae4f-591e45840d09" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/air_v31_0/Air.xsd" />
+    <MetadataFile FileName="Common.xsd" MetadataType="Schema" ID="a0955260-ad58-47d5-a6e2-02129226a8b6" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/common_v31_0/Common.xsd" />
+    <MetadataFile FileName="CommonReqRsp.xsd" MetadataType="Schema" ID="71b87660-2db1-43ee-8b9c-548c9e312be7" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/common_v31_0/CommonReqRsp.xsd" />
+    <MetadataFile FileName="AirService1.wsdl" MetadataType="Wsdl" ID="eff627b3-face-462e-bd74-f9934b8d4be1" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/air_v31_0/AirAbstract.wsdl" />
+    <MetadataFile FileName="AirReqRsp.xsd" MetadataType="Schema" ID="715c89d6-dd69-4a8b-967b-ef988586d773" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/air_v31_0/AirReqRsp.xsd" />
+    <MetadataFile FileName="Rail.xsd" MetadataType="Schema" ID="d5eb8354-c851-4f00-8d9d-9b747228f125" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/rail_v31_0/Rail.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

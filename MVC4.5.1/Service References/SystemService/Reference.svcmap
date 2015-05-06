@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="81cad7a8-afbe-411b-9f7a-2e1b893e6794" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="G:\jignesh\MVC4.5.1\MVC4.5.1\Wsdl\system_v9_0\System.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="eb834d61-bbf9-44e5-8025-77599a07ad2a" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/system_v9_0/System.xsd" />
+    <MetadataFile FileName="SystemService.wsdl" MetadataType="Wsdl" ID="c362eac5-4f75-48f7-88fb-72ad3d36354a" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/system_v9_0/SystemAbstract.wsdl" />
+    <MetadataFile FileName="CommonReqRsp.xsd" MetadataType="Schema" ID="0a0643e0-5d58-4038-a561-05925be9b373" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/common_v28_0/CommonReqRsp.xsd" />
+    <MetadataFile FileName="SystemService1.wsdl" MetadataType="Wsdl" ID="26a8e045-01c4-475a-b2ee-327154cb4cf7" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/system_v9_0/System.wsdl" />
+    <MetadataFile FileName="Common.xsd" MetadataType="Schema" ID="1b27f790-7065-4c38-97e7-ef7c61e08412" SourceId="1" SourceUrl="file:///G:/jignesh/MVC4.5.1/MVC4.5.1/Wsdl/common_v28_0/Common.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
