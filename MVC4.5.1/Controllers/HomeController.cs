@@ -67,6 +67,8 @@ namespace MVC4._5._1.Controllers
                 sMSTest.MsgOk = msgok;
                 sMSTest.ErrorCode = errorcode;
                 sMSTest.SMSDateTime = now;
+                sMSTest.CreatedDate = DateTime.Now;
+                sMSTest.ModifiedDate = DateTime.Now;
 
                 db.SMSTests.Add(sMSTest);
                 db.SaveChanges();
@@ -83,6 +85,8 @@ namespace MVC4._5._1.Controllers
                 sMSTest.MsgOk = msgok;
                 sMSTest.ErrorCode = errorcode;
                 sMSTest.SMSDateTime = now;
+                sMSTest.CreatedDate = DateTime.Now;
+                sMSTest.ModifiedDate = DateTime.Now;
 
                 db.SMSTests.Add(sMSTest);
                 db.SaveChanges();
