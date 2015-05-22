@@ -20,9 +20,9 @@ namespace MVC4._5._1.Controllers
 
             //  ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
-            string username = "jignesh.jinjariya@ncrypted.com";
-            string password = "jignesh1";
-            string msgsender = "Ncrypted Technologies";
+            string username = "nidhi.vadoliya@ncrypted.com";
+            string password = "w4hw9";
+            string msgsender = "NCrypted Technologies";
             string destinationaddr = "+918866658130";
             string message = "Hello Uttam From Jignesh";
 
