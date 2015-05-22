@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestingDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SMSTest">
+    <Key>
+      <PropertyRef Name="SMSTestId" />
+    </Key>
+    <Property Name="SMSTestId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MTStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MsgOk" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SMSDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="TestingDbDataContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SMSTests" EntityType="Self.SMSTest" />
+  </EntityContainer>
+</Schema>

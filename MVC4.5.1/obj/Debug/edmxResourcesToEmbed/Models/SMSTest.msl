@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestingDbModelStoreContainer" CdmEntityContainer="TestingDbDataContext">
+    <EntitySetMapping Name="SMSTests">
+      <EntityTypeMapping TypeName="TestingDbModel.SMSTest">
+        <MappingFragment StoreEntitySet="SMSTest">
+          <ScalarProperty Name="SMSTestId" ColumnName="SMSTestId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+          <ScalarProperty Name="MTStatus" ColumnName="MTStatus" />
+          <ScalarProperty Name="MsgOk" ColumnName="MsgOk" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="SMSDateTime" ColumnName="SMSDateTime" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

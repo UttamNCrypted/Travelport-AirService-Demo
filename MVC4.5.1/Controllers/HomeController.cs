@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC4._5._1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace MVC4._5._1.Controllers
 {
     public class HomeController : Controller
     {
+        TestingDbDataContext db = new TestingDbDataContext();
         public ActionResult Index()
         {
             return View();
@@ -51,23 +53,41 @@ namespace MVC4._5._1.Controllers
             return View();
         }
 
-        public ActionResult TestSMSDeliveryReport(string requesttype, int refno, int errorcode)
+        public ActionResult TestSMSDeliveryReport(string password, string username, string refno, string mtstatus, string msgok, string errorcode, string now)
         {
             try
             {
-                if (errorcode == 0)
-                {
-                    ViewBag.IsDelivered = "SMS Delivered Successfully!";
-                }
-                else
-                {
-                    ViewBag.IsDelivered = "SMS Delivered Unsuccessful!";
-                }
-                
+
+                SMSTest sMSTest = new SMSTest();
+                sMSTest.SMSTestId = Guid.NewGuid();
+                sMSTest.UserPassword = password;
+                sMSTest.UserName = username;
+                sMSTest.RefNo = refno;
+                sMSTest.MTStatus = mtstatus;
+                sMSTest.MsgOk = msgok;
+                sMSTest.ErrorCode = errorcode;
+                sMSTest.SMSDateTime = now;
+
+                db.SMSTests.Add(sMSTest);
+                db.SaveChanges();
+
             }
             catch (Exception ex)
             {
-                ViewBag.IsDelivered = ex.Message;
+                SMSTest sMSTest = new SMSTest();
+                sMSTest.SMSTestId = Guid.NewGuid();
+                sMSTest.UserPassword = "Error Occoured" + password;
+                sMSTest.UserName = username;
+                sMSTest.RefNo = refno;
+                sMSTest.MTStatus = mtstatus;
+                sMSTest.MsgOk = msgok;
+                sMSTest.ErrorCode = errorcode;
+                sMSTest.SMSDateTime = now;
+
+                db.SMSTests.Add(sMSTest);
+                db.SaveChanges();
+
+                throw ex;
             }
             return View();
         }
