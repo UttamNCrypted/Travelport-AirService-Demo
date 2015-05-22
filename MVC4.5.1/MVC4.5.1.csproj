@@ -209,6 +209,7 @@
     <Compile Include="Utility\HttpHeaderMessageInspector.cs" />
     <Compile Include="Utility\ProjectConstants.cs" />
     <Compile Include="Utility\WsdlService.cs" />
+    <Compile Include="ViaNettSMS.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -548,6 +549,8 @@
     </None>
     <None Include="Service References\SystemService\SystemService.wsdl" />
     <None Include="Service References\SystemService\SystemService1.wsdl" />
+    <Content Include="Views\Home\SendSMS.cshtml" />
+    <Content Include="Views\Home\TestSMSDeliveryReport.cshtml" />
     <None Include="Wsdl\air_v29_0\Air.wsdl">
       <SubType>Designer</SubType>
     </None>
