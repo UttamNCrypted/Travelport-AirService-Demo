@@ -1,13 +1,12 @@
-﻿//using MVC4._5._1.AirService;
-using MVC4._5._1.Utilities;
+﻿using MVC4._5._1.AirService;
+using MVC4._5._1.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Travelport.ServiceProxy.KestrelData.AirProxy;
 
-namespace MVC4._5._1.Controllers
+namespace MVC4._5._1
 {
     class AirSvcTest
     {
@@ -16,7 +15,7 @@ namespace MVC4._5._1.Controllers
         private string destination = "SFO";
 
 
-        public AvailabilitySearchRsp Availability()
+        public void Availability()
         {
 		    AvailabilitySearchReq request = new AvailabilitySearchReq();
 		    AvailabilitySearchRsp rsp;
@@ -36,8 +35,6 @@ namespace MVC4._5._1.Controllers
                 //Console.WriteLine(rsp.AirSegmentList.Count());
 
                 //return "AirItinerarySolution Count = " + rsp.AirItinerarySolution.Count() + " And AirSegmentList Count = " + rsp.AirSegmentList.Count();
-
-                return rsp;
             }
             catch (Exception se)
             {
@@ -70,13 +67,13 @@ namespace MVC4._5._1.Controllers
             //travel is for denver to san fransisco 2 months from now, one week trip
             SearchAirLeg outbound = AirReq.CreateSearchLeg(origin, destination);
             AirReq.AddSearchDepartureDate(outbound, Helper.daysInFuture(60));
-            AirReq.AddSearchEconomyPreferred(outbound, "Economy");
+            AirReq.AddSearchEconomyPreferred(outbound);
 
             //coming back
             SearchAirLeg ret = AirReq.CreateSearchLeg(destination, origin);
             AirReq.AddSearchDepartureDate(ret, Helper.daysInFuture(70));
             //put traveller in econ
-            AirReq.AddSearchEconomyPreferred(ret, "Economy");
+            AirReq.AddSearchEconomyPreferred(ret);
 
             request.Items = new SearchAirLeg[2];
             request.Items.SetValue(outbound, 0);

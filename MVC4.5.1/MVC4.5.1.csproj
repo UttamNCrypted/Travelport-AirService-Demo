@@ -20,7 +20,6 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +29,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,13 +37,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -54,9 +50,12 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -117,7 +116,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.30506.0\lib\net40\WebMatrix.Data.dll</HintPath>
@@ -189,7 +187,6 @@
     <Compile Include="Controllers\AirReq.cs" />
     <Compile Include="Controllers\AirSvcTest.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\oflyAirPriceReq.cs" />
     <Compile Include="Controllers\TutorialOne.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -197,15 +194,6 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProxyClasses\AirProxy.cs" />
-    <Compile Include="ProxyClasses\GDSQueueProxy.cs" />
-    <Compile Include="ProxyClasses\HotelProxy.cs" />
-    <Compile Include="ProxyClasses\RailProxy.cs" />
-    <Compile Include="ProxyClasses\TerminalProxy.cs" />
-    <Compile Include="ProxyClasses\UniversalProxy.cs" />
-    <Compile Include="ProxyClasses\UprofileProxy.cs" />
-    <Compile Include="ProxyClasses\UtilProxy.cs" />
-    <Compile Include="ProxyClasses\VehicleProxy.cs" />
     <Compile Include="Service References\AirService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -216,16 +204,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\UniversalRecordService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Utilities\CommonUtility.cs" />
-    <Compile Include="Utilities\Helper.cs" />
-    <Compile Include="Utilities\HttpHeaderMessageInspector.cs" />
-    <Compile Include="Utilities\ProjectConstants.cs" />
-    <Compile Include="Utilities\WsdlService.cs" />
+    <Compile Include="Utility\CommonUtility.cs" />
+    <Compile Include="Utility\Helper.cs" />
+    <Compile Include="Utility\HttpHeaderMessageInspector.cs" />
+    <Compile Include="Utility\ProjectConstants.cs" />
+    <Compile Include="Utility\WsdlService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -284,6 +267,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="App.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -497,165 +481,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\UniversalRecordService\configuration91.svcinfo" />
-    <None Include="Service References\UniversalRecordService\configuration.svcinfo" />
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.AckScheduleChangeRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.AirCancelRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.AirCreateReservationRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.AirMerchandisingFulfillmentRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.HotelCancelRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.HotelCreateReservationRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.PassiveCancelRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.PassiveCreateReservationRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.ProviderReservationDisplayDetailsRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.ProviderReservationDivideRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.RailCreateReservationRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.RailExchangeRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.SavedTripCreateRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.SavedTripDeleteRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.SavedTripModifyRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.SavedTripRetrieveRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.SavedTripSearchRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse10.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse11.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse12.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse13.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse14.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse15.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse16.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse17.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse18.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse19.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse2.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse20.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse21.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse22.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse23.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse24.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse3.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse4.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse5.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse6.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse7.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse8.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.serviceResponse9.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.UniversalRecordCancelRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.UniversalRecordHistorySearchRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.UniversalRecordImportRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.UniversalRecordModifyRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.UniversalRecordRetrieveRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.UniversalRecordSearchRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.VehicleCancelRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UniversalRecordService\MVC4._5._1.UniversalRecordService.VehicleCreateReservationRsp.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\UniversalRecordService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -722,48 +548,17 @@
     </None>
     <None Include="Service References\SystemService\SystemService.wsdl" />
     <None Include="Service References\SystemService\SystemService1.wsdl" />
-    <None Include="Service References\UniversalRecordService\AbstractUniversalRecordServices.wsdl" />
-    <None Include="Service References\UniversalRecordService\Air.xsd">
+    <None Include="Wsdl\air_v29_0\Air.wsdl">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UniversalRecordService\Common.xsd">
+    <None Include="Wsdl\air_v29_0\Air.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UniversalRecordService\CommonReqRsp.xsd">
+    <None Include="Wsdl\air_v29_0\AirAbstract.wsdl" />
+    <None Include="Wsdl\air_v29_0\AirReqRsp.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UniversalRecordService\Cruise.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UniversalRecordService\Hotel.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UniversalRecordService\Passive.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UniversalRecordService\Rail.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UniversalRecordService\UniversalRecord.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UniversalRecordService\UniversalRecordReqRsp.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UniversalRecordService\UniversalRecordServices.wsdl" />
-    <None Include="Service References\UniversalRecordService\Vehicle.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Views\Home\Test.cshtml" />
-    <None Include="Wsdl\air_v31_0\Air.wsdl" />
-    <None Include="Wsdl\air_v31_0\Air.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\air_v31_0\AirAbstract.wsdl" />
-    <None Include="Wsdl\air_v31_0\AirReqRsp.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\air_v31_0\Kestrel.xsd">
+    <None Include="Wsdl\air_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Wsdl\common_v17_0\Common.xsd">
@@ -793,6 +588,15 @@
     <None Include="Wsdl\common_v19_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Wsdl\common_v24_0\Common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Wsdl\common_v24_0\CommonReqRsp.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Wsdl\common_v24_0\Kestrel.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Wsdl\common_v28_0\Common.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -811,71 +615,43 @@
     <None Include="Wsdl\common_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\common_v30_0\Common.xsd">
+    <None Include="Wsdl\cruise_v29_0\Cruise.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\common_v30_0\CommonReqRsp.xsd">
+    <None Include="Wsdl\cruise_v29_0\CruiseReqRsp.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\common_v30_0\Kestrel.xsd">
+    <None Include="Wsdl\cruise_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\common_v31_0\Common.xsd">
+    <None Include="Wsdl\hotel_v29_0\Hotel.wsdl" />
+    <None Include="Wsdl\hotel_v29_0\Hotel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\common_v31_0\CommonReqRsp.xsd">
+    <None Include="Wsdl\hotel_v29_0\HotelAbstract.wsdl" />
+    <None Include="Wsdl\hotel_v29_0\HotelReqRsp.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\common_v31_0\Kestrel.xsd">
+    <None Include="Wsdl\hotel_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\cruise_v31_0\Cruise.xsd">
+    <None Include="Wsdl\passive_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\cruise_v31_0\CruiseReqRsp.xsd">
+    <None Include="Wsdl\passive_v29_0\Passive.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\cruise_v31_0\Kestrel.xsd">
+    <None Include="Wsdl\rail_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\gdsQueue_v31_0\GDSQueue.wsdl" />
-    <None Include="Wsdl\gdsQueue_v31_0\GDSQueue.xsd">
+    <None Include="Wsdl\rail_v29_0\Rail.wsdl" />
+    <None Include="Wsdl\rail_v29_0\Rail.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\gdsQueue_v31_0\GDSQueueAbstract.wsdl" />
-    <None Include="Wsdl\gdsQueue_v31_0\Kestrel.xsd">
+    <None Include="Wsdl\rail_v29_0\RailAbstract.wsdl" />
+    <None Include="Wsdl\rail_v29_0\RailReqRsp.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\hotel_v31_0\Hotel.wsdl" />
-    <None Include="Wsdl\hotel_v31_0\Hotel.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\hotel_v31_0\HotelAbstract.wsdl" />
-    <None Include="Wsdl\hotel_v31_0\HotelReqRsp.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\hotel_v31_0\Kestrel.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\passive_v31_0\Kestrel.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\passive_v31_0\Passive.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\rail_v31_0\Kestrel.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\rail_v31_0\Rail.wsdl" />
-    <None Include="Wsdl\rail_v31_0\Rail.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\rail_v31_0\RailAbstract.wsdl" />
-    <None Include="Wsdl\rail_v31_0\RailReqRsp.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\shareduprofile_v1_0\UProfileShared.wsdl" />
-    <None Include="Wsdl\shareduprofile_v1_0\UProfileSharedAbstract.wsdl" />
     <None Include="Wsdl\system_v9_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -884,56 +660,34 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Wsdl\system_v9_0\SystemAbstract.wsdl" />
-    <None Include="Wsdl\terminal_v9_0\Kestrel.xsd">
+    <None Include="Wsdl\universal_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\terminal_v9_0\Terminal.wsdl" />
-    <None Include="Wsdl\terminal_v9_0\Terminal.xsd">
+    <None Include="Wsdl\universal_v29_0\UniversalRecord.wsdl" />
+    <None Include="Wsdl\universal_v29_0\UniversalRecord.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\terminal_v9_0\TerminalAbstract.wsdl" />
-    <None Include="Wsdl\universal_v31_0\Kestrel.xsd">
+    <None Include="Wsdl\universal_v29_0\UniversalRecordAbstract.wsdl" />
+    <None Include="Wsdl\universal_v29_0\UniversalRecordReqRsp.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\universal_v31_0\UniversalRecord.wsdl" />
-    <None Include="Wsdl\universal_v31_0\UniversalRecord.xsd">
+    <None Include="Wsdl\util_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\universal_v31_0\UniversalRecordAbstract.wsdl" />
-    <None Include="Wsdl\universal_v31_0\UniversalRecordReqRsp.xsd">
+    <None Include="Wsdl\util_v29_0\Util.wsdl" />
+    <None Include="Wsdl\util_v29_0\Util.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\uprofile_v20_0\Kestrel.xsd">
+    <None Include="Wsdl\util_v29_0\UtilAbstract.wsdl" />
+    <None Include="Wsdl\vehicle_v29_0\Kestrel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\uprofile_v20_0\UProfile.wsdl" />
-    <None Include="Wsdl\uprofile_v20_0\UProfile.xsd">
+    <None Include="Wsdl\vehicle_v29_0\Vehicle.wsdl" />
+    <None Include="Wsdl\vehicle_v29_0\Vehicle.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wsdl\uprofile_v20_0\UProfileAbstract.wsdl" />
-    <None Include="Wsdl\uprofile_v20_0\UProfileCoreReqRsp.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\uprofile_v20_0\UProfileReqRsp.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\util_v31_0\Kestrel.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\util_v31_0\Util.wsdl" />
-    <None Include="Wsdl\util_v31_0\Util.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\util_v31_0\UtilAbstract.wsdl" />
-    <None Include="Wsdl\vehicle_v31_0\Kestrel.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\vehicle_v31_0\Vehicle.wsdl" />
-    <None Include="Wsdl\vehicle_v31_0\Vehicle.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Wsdl\vehicle_v31_0\VehicleAbstract.wsdl" />
-    <None Include="Wsdl\vehicle_v31_0\VehicleReqRsp.xsd">
+    <None Include="Wsdl\vehicle_v29_0\VehicleAbstract.wsdl" />
+    <None Include="Wsdl\vehicle_v29_0\VehicleReqRsp.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -949,7 +703,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AirService\" />
     <WCFMetadataStorage Include="Service References\SystemService\" />
-    <WCFMetadataStorage Include="Service References\UniversalRecordService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

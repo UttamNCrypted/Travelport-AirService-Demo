@@ -1,12 +1,12 @@
-﻿using System;
+﻿using MVC4._5._1.AirService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Travelport.ServiceProxy.KestrelData.AirProxy;
 
-namespace MVC4._5._1.Controllers
+namespace MVC4._5._1
 {
     class AirReq
     {
@@ -31,118 +31,18 @@ namespace MVC4._5._1.Controllers
          * @param request the req to add the passenger parameter to
          * @param n number of adults to put in the requset
          */
-
-        public static void AddPassengers(BaseLowFareSearchReq request, int[] n)
-        {
-            List<SearchPassenger> passList = new List<SearchPassenger>();
-
-            for (int i = 0; i < 3; i++)
-            {
-                int passenger = n[i];
-
-                for (int j = 0; j < passenger; j++)
-                {
-                    if (i == 0)
-                    {
-                        SearchPassenger adult = new SearchPassenger();
-
-                        adult.Code = "ADT";
-                        adult.DOB = DateTime.Now.AddYears(-40);
-                        adult.Age = "40";
-
-                        passList.Add(adult);
-                    }
-                    else if (i == 1)
-                    {
-                        SearchPassenger child = new SearchPassenger();
-                        child.Code = "CNN";
-                        child.DOB = DateTime.Now.AddYears(-10);
-                        child.Age = "10";
-                        passList.Add(child);
-                    }
-                    else if (i == 2)
-                    {
-                        SearchPassenger infant = new SearchPassenger();
-                        infant.Code = "INF";
-                        infant.DOB = DateTime.Now.AddYears(-1);
-                        infant.Age = "1";
-
-                        passList.Add(infant);
-                    }
-                }
-            }
-            request.SearchPassenger = passList.ToArray();
-        }
-
-        public static AirPricingModifiers FareAdjustment(string AdjustmentType, decimal Amount)
-        {
-            AirPricingModifiers pricingModifiers = new AirPricingModifiers();
-            List<ManualFareAdjustment> farelist = new List<ManualFareAdjustment>();
-            ManualFareAdjustment manualFareAdjustment = new ManualFareAdjustment();
-
-            if (AdjustmentType == "Amount")
-            {
-                manualFareAdjustment.AdjustmentType = typeAdjustmentType.Amount;
-            }
-            else
-            {
-                manualFareAdjustment.AdjustmentType = typeAdjustmentType.Percentage;
-            }
-            
-            manualFareAdjustment.PassengerRef = "1";
-            manualFareAdjustment.AppliedOn = typeAdjustmentTarget.Base;
-            manualFareAdjustment.Value = Amount;
-
-            farelist.Add(manualFareAdjustment);
-
-            pricingModifiers.ManualFareAdjustment = farelist.ToArray();
-            return pricingModifiers;
-        }
-
         public static void AddAdultPassengers(BaseLowFareSearchReq request, int n)
         {
             List<SearchPassenger> passList = new List<SearchPassenger>();
-            
             for (int i = 0; i < n; ++i)
             {
                 SearchPassenger adult = new SearchPassenger();
                 adult.Code = "ADT";
-                adult.DOB = DateTime.Now.AddYears(-40);
-                adult.Age = "40";                
-
                 passList.Add(adult);
             }
             request.SearchPassenger = passList.ToArray();
         }
 
-        public static void AddChildPassengers(BaseLowFareSearchReq request, int n)
-        {
-            List<SearchPassenger> passList = new List<SearchPassenger>();
-            for (int i = 0; i < n; ++i)
-            {
-                SearchPassenger child = new SearchPassenger();
-                child.Code = "CNN";
-                child.DOB = DateTime.Now.AddYears(-10);
-                child.Age = "10";
-                passList.Add(child);
-            }
-            request.SearchPassenger = passList.ToArray();
-        }
-
-        public static void AddInfantPassengers(BaseLowFareSearchReq request, int n)
-        {
-            List<SearchPassenger> passList = new List<SearchPassenger>();
-            for (int i = 0; i < n; ++i)
-            {
-                SearchPassenger infant = new SearchPassenger();
-                infant.Code = "INF";
-                infant.DOB = DateTime.Now.AddYears(-1);
-                infant.Age = "1";
-
-                passList.Add(infant);
-            }
-            request.SearchPassenger = passList.ToArray();
-        }
 
         public SearchAirLeg CreateAirLeg(string originAirportCode, string destAirportCode)
         {
@@ -231,74 +131,43 @@ namespace MVC4._5._1.Controllers
             List<typeFlexibleTimeSpec> flexList = new List<typeFlexibleTimeSpec>();
             flexList.Add(noFlex);
             outbound.Items = flexList.ToArray();
-
+            
         }
 
 
-        /**
-        * Search modifiers to create, usually a GDS code plus optionally 
-        * RCH (Helper.RAIL_PROVIDER) or ACH (Helper.LOW_COST_PROVIDER).
-        * 
-        * @param providerCode  one or more provider codes (zero will not work!)
-        * @return the modifiers object
-        */
-        public static AirSearchModifiers CreateModifiersWithProviders(String[] providerCode)
-        {
-            AirSearchModifiers modifiers = new AirSearchModifiers();
+         /**
+	     * Search modifiers to create, usually a GDS code plus optionally 
+	     * RCH (Helper.RAIL_PROVIDER) or ACH (Helper.LOW_COST_PROVIDER).
+	     * 
+	     * @param providerCode  one or more provider codes (zero will not work!)
+	     * @return the modifiers object
+	     */
+	    public static AirSearchModifiers CreateModifiersWithProviders(String[] providerCode) {
+		    AirSearchModifiers modifiers = new AirSearchModifiers();
             List<Provider> providers = new List<Provider>();
 
-            for (int i = 0; i < providerCode.Length; ++i)
-            {
-                Provider p = new Provider();
-                // set the code for the provider
-                p.Code = providerCode[i];
-                // can be many providers, but we just use one
-                providers.Add(p);
-            }
-            modifiers.PreferredProviders = providers.ToArray();
-            return modifiers;
-        }
-
-        //public static SearchAirLeg CreateSearchLeg(String originAirportCode, String destAirportCode)
-        //{
-        //    // TODO Auto-generated method stub
-        //    typeSearchLocation originLoc = new typeSearchLocation();
-        //    typeSearchLocation destLoc = new typeSearchLocation();
-
-        //    // airport objects are just wrappers for their codes
-        //    Airport origin = new Airport(), dest = new Airport();
-        //    origin.Code = originAirportCode;
-        //    dest.Code = destAirportCode;
-
-        //    // search locations can be things other than airports but we are using
-        //    // the airport version...
-        //    originLoc.Item = origin;
-        //    destLoc.Item = dest;
-
-        //    return CreateSearchLeg(originLoc, destLoc);
-        //}
+		    for (int i=0; i<providerCode.Length;++i) {
+			    Provider p = new Provider();
+			    // set the code for the provider
+			    p.Code  = providerCode[i];
+			    // can be many providers, but we just use one
+			    providers.Add(p);
+		    }
+		    modifiers.PreferredProviders  = providers.ToArray();
+		    return modifiers;
+	    }
 
         public static SearchAirLeg CreateSearchLeg(String originAirportCode, String destAirportCode)
         {
-            
             // TODO Auto-generated method stub
             typeSearchLocation originLoc = new typeSearchLocation();
             typeSearchLocation destLoc = new typeSearchLocation();
 
-            CityOrAirport origin = new CityOrAirport();
-            CityOrAirport dest = new CityOrAirport();
-
+            // airport objects are just wrappers for their codes
+            Airport origin = new Airport(), dest = new Airport();
             origin.Code = originAirportCode;
-            origin.PreferCity = true;
-
             dest.Code = destAirportCode;
-            dest.PreferCity = true;
-            
-            //// airport objects are just wrappers for their codes
-            //Airport origin = new Airport(), dest = new Airport();
-            //origin.Code = originAirportCode;
-            //dest.Code = destAirportCode;
-            
+
             // search locations can be things other than airports but we are using
             // the airport version...
             originLoc.Item = origin;
@@ -333,12 +202,12 @@ namespace MVC4._5._1.Controllers
             outbound.Items = flexList.ToArray();
         }
 
-        public static void AddSearchEconomyPreferred(SearchAirLeg outbound, string cabinClassName)
+        public static void AddSearchEconomyPreferred(SearchAirLeg outbound)
         {
             AirLegModifiers modifiers = new AirLegModifiers();
             AirLegModifiersPreferredCabins cabins = new AirLegModifiersPreferredCabins();
             CabinClass cabinClass = new CabinClass();
-            cabinClass.Type = cabinClassName;
+            cabinClass.Type = "Economy";
             cabins.CabinClass = cabinClass;
 
             modifiers.PreferredCabins = cabins;
