@@ -382,3 +382,28 @@ namespace OFly.Controllers
         #endregion Object Serialization Object to XML & XML to object
     }
 }
+
+
+
+        //[HttpPost]
+        //public ActionResult FlightBooking(BookingPassengerInfoModel bookingPassengerInfoModel)
+        //{
+        //    try
+        //    {
+        //        if (Session["AirPriceRsp"] != null)
+        //        {
+        //            LowFareBookingAPI lowFareBookingAPI = new LowFareBookingAPI();
+        //            AirPriceRsp airPriceRsp = (AirPriceRsp)Session["AirPriceRsp"];
+
+        //            OFly.UniversalRecordService.AirCreateReservationRsp airCreateReservationRsp = lowFareBookingAPI.AirBookingReservationRequest(airPriceRsp.AirPriceResult[0].AirPricingSolution[0], airPriceRsp.AirItinerary, "", "", bookingPassengerInfoModel.BookingTravellerInfoData, bookingPassengerInfoModel.FormOfPaymentInfoData);
+
+        //            Session["airCreateReservationRsp"] = airCreateReservationRsp;
+        //        }
+
+        //        return View("BookingConfirm");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
